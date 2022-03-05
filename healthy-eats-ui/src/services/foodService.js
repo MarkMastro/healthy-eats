@@ -57,7 +57,7 @@ class _FoodService {
     }
     return [];
   }
-
+//
   async saveDayOrder(payload) {
     HttpService.post("/api/orders", payload);
   }
@@ -124,16 +124,20 @@ class _FoodService {
   }
 
   async getIngredientsList(searchTerm){
+    console.log("search term", searchTerm)
     const ingredients = await HttpService.get(
       ingredientListUrl,
       {
         apiKey: foodApiToken,
         query: searchTerm,
+        number: 5
        
       });
     console.log("ingredients", ingredients.results)
      return ingredients.results;
   }
+
+  
 }
 
 const FoodService = new _FoodService();

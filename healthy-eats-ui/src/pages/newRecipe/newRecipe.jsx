@@ -15,10 +15,12 @@ export function NewRecipe(props) {
     const [recipeInstructions, setRecipeInstructions] = useState(" ½ cup chopped red onion (about ½ small red onion) 1 pint (12 ounces or 2 cups) cherry tomatoes, halved 1 pound additional tomatoes (about 1 large, 2 medium or 3 small), cut into bite-sized wedges")
 
     const [recipeImageUrls, setRecipeImageUrls] = useState("https://cookieandkate.com/images/2020/08/tomato-cucumber-salad-recipe-3-768x1154.jpg")
-    const [recipeIngredients, setRecipeIngredients] = useState([{ingredient: "Tomato", ingredientServings:"2", ingredientUnit: "Cups"}, {ingredient: " Potato", ingredientServings:"2", ingredientUnit: "Cups"}]);
+    const [recipeIngredients, setRecipeIngredients] = useState([]);
     const [ingredient, setIngredient] = useState("")
     const [ingredientServings, setIngredientServings] = useState("1")
-    const [ingredientUnit, setIngredientUnit] = useState("Cups")
+    const [ingredientUnit, setIngredientUnit] = useState()
+
+    const [ingredientSelection, setIngredientSelection] = useState([])
 
 
     const setIsNewRecipeActive = props.handleClick;
@@ -38,9 +40,7 @@ export function NewRecipe(props) {
            recipeIngredients           
        }
 
-       HealthyEatsApiService.addNewRecipe(sessionStorage.sessionUserId, newRecipe)
-     
-            
+       HealthyEatsApiService.addNewRecipe(sessionStorage.sessionUserId, newRecipe) 
         };
     
     const addIngredients=(e)=>{
@@ -68,7 +68,16 @@ export function NewRecipe(props) {
         )
     }
     
- 
+    const onIngredientChange=(e)=>{
+        setIngredient(e.target.value)
+
+        foodService.getIngredientsList(e.target.value)
+        .then((results)=>{
+            setIngredientSelection(results);
+
+        })
+        
+    }
 
 
     return(
@@ -112,8 +121,18 @@ export function NewRecipe(props) {
                         <input  
                         type="text"
                         value={ingredient}
-                        onChange={(e) => setIngredient(e.target.value)}
+                        onChange={onIngredientChange}
+                        list="ingredient-choices"
                         />
+                        {ingredientSelection.length > 0 ?   <datalist id="ingredient-choices" >
+                            <option>{ingredientSelection[0].name}</option>
+                            <option>{ingredientSelection[1].name}</option>
+                            <option>{ingredientSelection[2].name}</option>
+                            <option>{ingredientSelection[3].name}</option>
+                            <option>{ingredientSelection[4].name}</option>
+
+                        </datalist> : null}
+                      
                         <label>Ingredient Servings</label>
                         <input 
                         className = "servings-num" 
@@ -125,7 +144,7 @@ export function NewRecipe(props) {
                             id="unit" 
                             name="unit" 
                             value={ingredientUnit} 
-                            onChange={(e) => setIngredientUnit(e.target.value)}
+                            onChange={(e)=>setIngredientUnit}
                             >
                                 <option value="Cups">Cups</option>
                                 <option value="Tbsp">Tbsp</option>

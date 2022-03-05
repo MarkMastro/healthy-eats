@@ -31,6 +31,8 @@ const usersRoutes = require("./routes/users");
 const ordersRoute = require("./routes/orders");
 const userSavedRecipes = require("./routes/savedRecipes");
 const userLikedRecipes = require("./routes/likedRecipes");
+const userCreatedRecipes = require("./routes/createdRecipes");
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -53,5 +55,6 @@ app.use("/api/orders", ordersRoute(db));
 app.use("/api/savedRecipes", userSavedRecipes(db));
 app.use("/api/likedRecipes", userLikedRecipes(db));
 app.use("/api/shoppingLists", userShoppingList(db));
+app.use("/api/createdRecipes", userCreatedRecipes(db))
 app.listen(PORT, () => {
 });
