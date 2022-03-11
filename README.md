@@ -10,6 +10,15 @@
   !["addToShoppingListIngridients.png"](https://github.com/harjeet14/healthy-eats/blob/main/healthy-eats-ui/src/Docs/addToShoppingListINgridients.png)
   # Add Ingridients To Shopping List
   !["ShoppingList.png"](https://github.com/harjeet14/healthy-eats/blob/main/healthy-eats-ui/src/Docs/shoppingList.png)  
+  # View Planned Recipes in a Calendar with Calorie Information
+  ![Calendar](https://user-images.githubusercontent.com/84885238/157790093-61534829-e17c-48aa-ac50-9efe23066650.PNG)
+  # Add Recipes from the Calendar Planner
+  ![Calendar Search](https://user-images.githubusercontent.com/84885238/157790209-ee476779-9729-45fd-a3a9-d6782c8511de.PNG)
+  # Create New Recipes
+  ![Add Recipe 1](https://user-images.githubusercontent.com/84885238/157790249-63793e31-fb6b-4455-81ab-61f3a1ef6324.PNG)
+  ![Add Recipe 2](https://user-images.githubusercontent.com/84885238/157790254-dd2daa5a-5296-4f98-bba0-3e634757b1ce.PNG)
+
+
 ## Setup
 ## Available Scripts
 
